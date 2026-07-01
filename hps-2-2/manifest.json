@@ -5,7 +5,7 @@
     {
       "chipFamily": "ESP32-C3",
       "ota": {
-        "md5": "5f9933ded26e9650feb566c29431a973",
+        "md5": "1271f9d5c11c82deda8fa0694a512115",
         "path": "akamatis-hps-2-2-v1.3.1.ota.bin",
         "summary": "Adds Home Assistant firmware update support so future firmware versions can be installed directly from Home Assistant."
       }
