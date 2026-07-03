@@ -1,0 +1,14 @@
+{
+  "name": "Akamatis Smart Device",
+  "version": "1.3.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "md5": ""fb7ceab51a0cb365ad049ced2df58324,
+        "path": "akamatis-c3-supermini-ld2410-v1.3.0.ota.bin",
+        "summary": "Adds Home Assistant firmware update support so future firmware versions can be installed directly from Home Assistant."
+      }
+    }
+  ]
+}
