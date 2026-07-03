@@ -1,0 +1,14 @@
+{
+  "name": "Akamatis Smart Device",
+  "version": "1.3.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "md5": "48855d8257be64d02d8b88a047ad99c1",
+        "path": "akamatis-seeed-c3-ld2410-veml7700-v1.3.0.ota.bin",
+        "summary": "Adds Home Assistant firmware update support so future firmware versions can be installed directly from Home Assistant."
+      }
+    }
+  ]
+}
