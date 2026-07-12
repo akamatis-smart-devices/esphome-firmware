@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>Install HPS v2.2 Firmware</title>
+
+  <script
+    type="module"
+    src="https://unpkg.com/esp-web-tools@10/dist/web/install-button.js?module"
+  ></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 20px;
+      background: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+      color: #222;
+    }
+
+    .installer {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 36px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .model-name {
+      margin-top: 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .instructions {
+      margin: 28px 0;
+      text-align: left;
+    }
+
+    .instructions li {
+      margin-bottom: 10px;
+    }
+
+    esp-web-install-button {
+      display: inline-block;
+      margin: 12px 0 24px;
+    }
+
+    .install-button {
+      padding: 14px 28px;
+      border: 0;
+      border-radius: 8px;
+      background: #1769aa;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .install-button:hover {
+      opacity: 0.9;
+    }
+
+    .warning {
+      margin-top: 24px;
+      padding: 16px;
+      background: #fff8e1;
+      border: 1px solid #e2ca79;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .unsupported {
+      display: block;
+      padding: 16px;
+      background: #fdecea;
+      border: 1px solid #e5a3a0;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="installer">
+    <h1>Install Akamatis Firmware</h1>
+
+    <p class="model-name">
+      HPS v2.2
+    </p>
+
+    <div class="instructions">
+      <ol>
+        <li>
+          Connect the device to your computer using a USB data cable.
+        </li>
+
+        <li>
+          Click <strong>Install Firmware</strong>.
+        </li>
+
+        <li>
+          Select the serial port associated with the device.
+        </li>
+
+        <li>
+          Keep the device connected until installation is complete.
+        </li>
+      </ol>
+    </div>
+
+    <esp-web-install-button
+      manifest="../seeed-c3-ld2410/webtool-manifest.json"
+    >
+      <button
+        class="install-button"
+        slot="activate"
+        type="button"
+      >
+        Install Firmware
+      </button>
+
+      <span
+        class="unsupported"
+        slot="unsupported"
+      >
+        This browser does not support firmware installation.
+        Please use Google Chrome or Microsoft Edge on a desktop computer.
+      </span>
+    </esp-web-install-button>
+
+    <div class="warning">
+      <strong>Important:</strong>
+      Make sure you are installing firmware for HPS v2.2.
+      Installing firmware for the wrong device model may prevent the
+      sensors from working correctly.
+    </div>
+  </main>
+</body>
+</html>
