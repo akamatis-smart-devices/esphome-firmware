@@ -8,7 +8,7 @@
     content="width=device-width, initial-scale=1"
   >
 
-  <title>Install HPS v2.2 Firmware</title>
+  <title>Install Akamatis Firmware</title>
 
   <script
     type="module"
@@ -23,33 +23,34 @@
     body {
       margin: 0;
       padding: 40px 20px;
-      background: #f5f5f5;
+      background: #f5f8fc;
+      color: #121826;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.5;
-      color: #222;
     }
 
-    .installer {
+    .installer-card {
       width: 100%;
       max-width: 680px;
       margin: 0 auto;
       padding: 36px;
-      background: white;
-      border: 1px solid #ddd;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-radius: 14px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 4px 18px rgb(0 0 0 / 8%);
       text-align: center;
     }
 
     h1 {
-      margin-top: 0;
-      margin-bottom: 8px;
+      margin: 0 0 10px;
+      font-size: 34px;
     }
 
     .model-name {
-      margin-top: 0;
-      font-size: 18px;
-      font-weight: bold;
+      margin: 0 0 28px;
+      color: #0866e5;
+      font-size: 20px;
+      font-weight: 700;
     }
 
     .instructions {
@@ -58,22 +59,23 @@
     }
 
     .instructions li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     esp-web-install-button {
       display: inline-block;
-      margin: 12px 0 24px;
+      margin: 14px 0 24px;
     }
 
     .install-button {
+      min-height: 50px;
       padding: 14px 28px;
       border: 0;
       border-radius: 8px;
-      background: #1769aa;
-      color: white;
+      background: #0866e5;
+      color: #ffffff;
       font-size: 17px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
     }
 
@@ -84,76 +86,209 @@
     .warning {
       margin-top: 24px;
       padding: 16px;
-      background: #fff8e1;
-      border: 1px solid #e2ca79;
+      background: #fff7e6;
+      border: 1px solid #f2d698;
       border-radius: 8px;
       text-align: left;
     }
 
-    .unsupported {
-      display: block;
-      padding: 16px;
+    .error {
+      padding: 18px;
       background: #fdecea;
       border: 1px solid #e5a3a0;
       border-radius: 8px;
+      color: #8a1f17;
+    }
+
+    .technical-details {
+      margin-top: 22px;
+      color: #64748b;
+      font-size: 13px;
+      word-break: break-word;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .installer-card {
+        padding: 24px 18px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .install-button {
+        width: 100%;
+      }
+
+      esp-web-install-button {
+        display: block;
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
-  <main class="installer">
-    <h1>Install Akamatis Firmware</h1>
+  <main class="installer-card">
+    <div id="installerContainer" hidden>
+      <h1>Install Akamatis Firmware</h1>
 
-    <p class="model-name">
-      HPS v2.2
-    </p>
+      <p id="modelName" class="model-name"></p>
 
-    <div class="instructions">
-      <ol>
-        <li>
-          Connect the device to your computer using a USB data cable.
-        </li>
+      <p>
+        Connect your device to the computer using a USB data cable,
+        then follow the steps below.
+      </p>
 
-        <li>
-          Click <strong>Install Firmware</strong>.
-        </li>
+      <div class="instructions">
+        <ol>
+          <li>Connect the Akamatis device to your computer.</li>
+          <li>Click <strong>Install Firmware</strong>.</li>
+          <li>Select the serial port associated with the device.</li>
+          <li>Keep the device connected until installation is complete.</li>
+        </ol>
+      </div>
 
-        <li>
-          Select the serial port associated with the device.
-        </li>
+      <esp-web-install-button id="installButton">
+        <button
+          class="install-button"
+          slot="activate"
+          type="button"
+        >
+          Install Firmware
+        </button>
 
-        <li>
-          Keep the device connected until installation is complete.
-        </li>
-      </ol>
+        <div class="error" slot="unsupported">
+          This browser does not support firmware installation.
+          Please use Google Chrome or Microsoft Edge on a desktop computer.
+        </div>
+      </esp-web-install-button>
+
+      <div class="warning">
+        <strong>Important:</strong>
+        Confirm that the selected device model matches the model shown
+        on the product label.
+      </div>
+
+      <p id="technicalDetails" class="technical-details"></p>
     </div>
 
-    <esp-web-install-button
-      manifest="../seeed-c3-ld2410/webtool-manifest.json"
-    >
-      <button
-        class="install-button"
-        slot="activate"
-        type="button"
-      >
-        Install Firmware
-      </button>
+    <div id="errorContainer" class="error" hidden>
+      <strong>No valid device model was selected.</strong>
 
-      <span
-        class="unsupported"
-        slot="unsupported"
-      >
-        This browser does not support firmware installation.
-        Please use Google Chrome or Microsoft Edge on a desktop computer.
-      </span>
-    </esp-web-install-button>
-
-    <div class="warning">
-      <strong>Important:</strong>
-      Make sure you are installing firmware for HPS v2.2.
-      Installing firmware for the wrong device model may prevent the
-      sensors from working correctly.
+      <p>
+        Please return to the Akamatis Firmware Update page and select
+        your device model.
+      </p>
     </div>
   </main>
+
+  <script>
+    const FIRMWARE_MODELS = Object.freeze({
+      "hps-v1-3": {
+        label: "HPS v1.3",
+        folder: "c3-wroom-02-ld2410"
+      },
+
+      "stagona-v1": {
+        label: "Stagona v1",
+        folder: "seeed-c3-ld2410-aht20"
+      },
+
+      "hps-v1-1": {
+        label: "HPS v1.1",
+        folder: "c3-supermini-ld2410"
+      },
+
+      "hps-v2-1": {
+        label: "HPS v2.1",
+        folder: "c3-supermini-ld2410"
+      },
+
+      "hps-v3-1": {
+        label: "HPS v3.1",
+        folder: "c3-supermini-ld2410"
+      },
+
+      "litos-v1": {
+        label: "Litos v1",
+        folder: "c3-supermini-ld2410-veml7700"
+      },
+
+      "hps-v2-2": {
+        label: "HPS v2.2",
+        folder: "seeed-c3-ld2410"
+      },
+
+      "hps-v1-2": {
+        label: "HPS v1.2",
+        folder: "seeed-c3-ld2410"
+      },
+
+      "litos-v2": {
+        label: "Litos v2",
+        folder: "seeed-c3-ld2410-veml7700"
+      },
+
+      "litos-v3": {
+        label: "Litos v3",
+        folder: "seeed-c3-ld2410-veml7700"
+      }
+    });
+
+    function normalizeModelId(value) {
+      return String(value || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\./g, "-")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "")
+        .replace(/-+/g, "-");
+    }
+
+    function initializeInstaller() {
+      const parameters = new URLSearchParams(window.location.search);
+      const modelId = normalizeModelId(parameters.get("model"));
+      const model = FIRMWARE_MODELS[modelId];
+
+      const installerContainer =
+        document.getElementById("installerContainer");
+
+      const errorContainer =
+        document.getElementById("errorContainer");
+
+      if (!model) {
+        errorContainer.hidden = false;
+        return;
+      }
+
+      const manifestUrl =
+        `../${model.folder}/webtool-manifest.json`;
+
+      document.title = `Install ${model.label} Firmware`;
+
+      document.getElementById("modelName").textContent =
+        model.label;
+
+      document.getElementById("technicalDetails").textContent =
+        `Hardware package: ${model.folder}`;
+
+      document
+        .getElementById("installButton")
+        .setAttribute("manifest", manifestUrl);
+
+      installerContainer.hidden = false;
+    }
+
+    initializeInstaller();
+  </script>
 </body>
 </html>
