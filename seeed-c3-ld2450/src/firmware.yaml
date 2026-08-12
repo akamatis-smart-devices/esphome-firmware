@@ -52,6 +52,7 @@ globals:
 improv_serial:
   
 logger:
+  level: DEBUG
 
 debug:
   update_interval: 30s
