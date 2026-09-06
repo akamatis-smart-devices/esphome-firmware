@@ -1,0 +1,14 @@
+{
+  "name": "Akamatis Smart Device",
+  "version": "1.3.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "md5": "3d10bf04efd6d8f9fca709c23bd1c562",
+        "path": "akamatis-c3-wroom-02-ld2410-veml7700-v1.3.0.ota.bin",
+        "summary": "Adds Home Assistant firmware update support so future firmware versions can be installed directly from Home Assistant."
+      }
+    }
+  ]
+}
