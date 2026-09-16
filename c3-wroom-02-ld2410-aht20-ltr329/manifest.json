@@ -1,0 +1,14 @@
+{
+  "name": "Akamatis Smart Device",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "md5": "c36f126acfdae60f178bbfcdea9a04b3",
+        "path": "firmware.ota.bin",
+        "summary": "Initial firmware for hardware c3-wroom-02-ld2410-aht20-ltr329."
+      }
+    }
+  ]
+}
