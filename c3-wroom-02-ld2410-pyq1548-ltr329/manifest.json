@@ -1,0 +1,14 @@
+{
+  "name": "Akamatis Smart Device",
+  "version": "1.0.0",
+  "builds": [
+    {
+      "chipFamily": "ESP32-C3",
+      "ota": {
+        "md5": "9e792e83b79c14d1222e106e78fd06e3",
+        "path": "firmware.ota.bin",
+        "summary": "Initial firmware for hardware c3-wroom-02-ld2410-pyq1548-ltr329."
+      }
+    }
+  ]
+}
