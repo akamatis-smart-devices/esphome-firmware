@@ -1,13 +1,13 @@
 {
   "name": "Akamatis Smart Device",
-  "version": "1.2.0",
+  "version": "1.1.0",
   "builds": [
     {
       "chipFamily": "ESP32-C3",
       "ota": {
-        "md5": "e2da8d8e694142dd7974958c245d117e",
-        "path": "firmware.ota.bin",
-        "summary": "Adds an embedded Zone Editor, accessible by clicking Visit on your Skopos device page in Home Assistant. Previous zone configurations are not supported. After updating, you’ll need to recreate and save your zones using the new editor."
+        "md5": "3a1c90f17ac4745ccadb85f889fad67d",
+        "path": "akamatis-seeed-c3-ld2450-v1.1.0.ota.bin",
+        "summary": "Adds Home Assistant firmware update support so future firmware versions can be installed directly from Home Assistant."
       }
     }
   ]
