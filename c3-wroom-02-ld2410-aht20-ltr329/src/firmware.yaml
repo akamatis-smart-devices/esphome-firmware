@@ -6,6 +6,7 @@ substitutions:
   firmware_manifest_url: https://firmware.akamatis.com/c3-wroom-02-ld2410-aht20-ltr329/manifest.json
   esp32_tx_pin: GPIO21
   esp32_rx_pin: GPIO20
+  hotspot_suffix: "Hotspot"
 
 esphome:
   name: ${device_name}
@@ -66,7 +67,7 @@ wifi:
   power_save_mode: NONE
   reboot_timeout: 0s
   ap:
-    ssid: "${friendly_name} Hotspot"
+    ssid: "${friendly_name} ${hotspot_suffix}"
     password: ""
     ap_timeout: 1min
 
