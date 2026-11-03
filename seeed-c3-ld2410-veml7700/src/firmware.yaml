@@ -2,10 +2,11 @@ substitutions:
   device_name: akamatis-smart-device
   friendly_name: Akamatis Smart Device
   project_name: Akamatis.SmartHomeDevice
-  firmware_version: 1.3.0
+  firmware_version: 1.3.1
   firmware_manifest_url: https://firmware.akamatis.com/seeed-c3-ld2410-veml7700/manifest.json
   esp32_tx_pin: GPIO21
   esp32_rx_pin: GPIO20
+  hotspot_suffix: "Hotspot"
 
 esphome:
   name: ${device_name}
@@ -23,11 +24,14 @@ esp32:
 logger:
   level: DEBUG
 
+debug:
+  update_interval: 60s
+
 wifi:
   power_save_mode: NONE
   reboot_timeout: 0s
   ap:
-    ssid: "${friendly_name} Hotspot"
+    ssid: "${friendly_name} ${hotspot_suffix}"
     password: ""
     ap_timeout: 1min
 
@@ -296,6 +300,12 @@ text_sensor:
     mac_address:
       name: "03: MAC address"
 
+  - platform: debug
+    reset_reason:
+      name: "ESP32 - Last Reset Reason"
+      entity_category: diagnostic
+      disabled_by_default: true
+
 switch:
   - platform: template
     name: "010: Radar - Auto calibration"
@@ -452,6 +462,18 @@ i2c:
   id: bus_a
 
 sensor:
+  - platform: wifi_signal
+    name: "04: WiFi RSSI"
+    update_interval: 5s
+    entity_category: diagnostic
+
+  - platform: uptime
+    name: "05: ESP32 - Uptime"
+    type: seconds
+    update_interval: 60s
+    entity_category: diagnostic
+
+
   # Light Sensor VEML7700
   - platform: veml7700
     i2c_id: bus_a
