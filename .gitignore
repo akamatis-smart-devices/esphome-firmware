@@ -1,4 +1,6 @@
 .venv/
+.venv-*/
+.venv.backup.*/
 venv/
 __pycache__/
 *.py[cod]
@@ -6,3 +8,6 @@ __pycache__/
 # Ignore all esphome build binaries
 **/.esphome/
 
+
+# Local Litos tuner source; private backup/version control is managed separately.
+/seeed-c3-ld2410-veml7700/private/

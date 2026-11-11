@@ -1,13 +1,13 @@
 {
   "name": "Akamatis Smart Device",
-  "version": "1.3.1",
+  "version": "1.4.0",
   "builds": [
     {
       "chipFamily": "ESP32-C3",
       "ota": {
-        "md5": "0ee505b1a499ce11712ad93a8ce5f212",
+        "md5": "8ccca124eff1ec6cd1142772988920ac",
         "path": "firmware.ota.bin",
-        "summary": "Adds Wi-Fi signal strength (RSSI) and other diagnostic entities."
+        "summary": "Adds an embedded Radar tuner, accessible by clicking Visit on your Litos device page in Home Assistant."
       }
     }
   ]

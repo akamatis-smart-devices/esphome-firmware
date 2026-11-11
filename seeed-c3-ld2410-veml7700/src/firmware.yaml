@@ -2,7 +2,7 @@ substitutions:
   device_name: akamatis-smart-device
   friendly_name: Akamatis Smart Device
   project_name: Akamatis.SmartHomeDevice
-  firmware_version: 1.3.1
+  firmware_version: 1.4.0
   firmware_manifest_url: https://firmware.akamatis.com/seeed-c3-ld2410-veml7700/manifest.json
   esp32_tx_pin: GPIO21
   esp32_rx_pin: GPIO20
@@ -120,6 +120,7 @@ button:
       entity_category: ""
 
     factory_reset:
+      id: radar_factory_reset
       name: "03: Radar - Factory reset"
       entity_category: ""
 
@@ -271,6 +272,7 @@ script:
 select:
   - platform: ld2410
     distance_resolution:
+      id: radar_distance_resolution
       name: Distance resolution
       disabled_by_default: true
 
@@ -281,10 +283,13 @@ select:
 binary_sensor:
   - platform: ld2410
     has_target:
+      id: radar_presence
       name: Presence
     has_moving_target:
+      id: radar_moving
       name: Moving Target
     has_still_target:
+      id: radar_still
       name: Still Target
 
 text_sensor:
@@ -376,10 +381,13 @@ number:
 
   - platform: ld2410
     timeout:
+      id: radar_presence_hold
       name: "020: Presence Hold"
     max_move_distance_gate:
+      id: radar_max_move
       name: "030: Max move distance gate"
     max_still_distance_gate:
+      id: radar_max_still
       name: "040: Max still distance gate"
 
     g0:
@@ -487,8 +495,10 @@ sensor:
   # Main Unit: human presence (ld2401/ld2410)
   - platform: ld2410
     moving_distance:
+      id: radar_moving_distance
       name: Moving Distance
     still_distance:
+      id: radar_still_distance
       name: Still Distance
     moving_energy:
       name: Move Energy
@@ -569,3 +579,6 @@ sensor:
       still_energy:
         name: G8 still energy
         id: g8_still_energy
+
+packages:
+  radar_tuner: !include ../private/bindings/litos-v3.yaml
